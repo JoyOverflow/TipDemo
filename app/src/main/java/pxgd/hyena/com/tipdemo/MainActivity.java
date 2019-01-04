@@ -1,13 +1,17 @@
 package pxgd.hyena.com.tipdemo;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MyActivity {
 
+    /**
+     * 当前活动要加载的片段
+     * @return
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected Fragment createFragment() {
+        return MainFragment.newInstance();
     }
+
+
 }
