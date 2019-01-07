@@ -1,6 +1,7 @@
 package pxgd.hyena.com.tipdemo;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -33,5 +34,20 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
+
+
+
+    private class FetchTask extends AsyncTask<String,Void,Void> {
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            return null;
+        }
+    }
+
+
+
+
+
 
 }
