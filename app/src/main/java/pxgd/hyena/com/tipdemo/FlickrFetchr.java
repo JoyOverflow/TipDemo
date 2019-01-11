@@ -22,7 +22,9 @@ import java.util.List;
 public class FlickrFetchr {
 
     private static final String TAG = "FlickrFetchr";
-    private static final String API_KEY = "OUYANG_JUN";
+    private static final String API_KEY = "ouyangjun";
+    private static final String SEARCH_METHOD = "search";
+    private static final String FETCH_METHOD = "select";
 
     /**
      * 从指定Url处返回字节数组
@@ -65,23 +67,13 @@ public class FlickrFetchr {
 
 
     /**
-     * 返回指定Url的图像泛型集合
+     * 返回指定Url的图像泛型集合（废弃）
      * @return
      */
     public List<GalleryItem> fetchItems() {
         List<GalleryItem> items = new ArrayList<>();
         try {
             //构建请求Url（自动正确参数化）
-            /*
-            String url = Uri.parse("https://api.flickr.com/services/rest/")
-                    .buildUpon()
-                    .appendQueryParameter("method", "flickr.photos.getRecent")
-                    .appendQueryParameter("api_key", API_KEY)
-                    .appendQueryParameter("format", "json")
-                    .appendQueryParameter("nojsoncallback", "1")
-                    .appendQueryParameter("extras", "url_s")
-                    .build().toString();
-            */
             String url = Uri.parse("http://192.168.0.100:8081/API/Photo/")
                     .buildUpon()
                     .appendQueryParameter("id", "102459")
@@ -102,6 +94,62 @@ public class FlickrFetchr {
             Log.e(TAG, "Failed to parse JSON", je);
         }
 
+        return items;
+    }
+
+
+    /**
+     * 构建URL（如果是搜索则拼接新参数）
+     * @param method
+     * @param query
+     * @return
+     */
+    private String buildUrl(String method, String query) {
+        Uri ENDPOINT = Uri.parse("http://192.168.0.100:8081/API/Photo/")
+                .buildUpon()
+                .appendQueryParameter("id", "102459")
+                .appendQueryParameter("key", API_KEY)
+                .build();
+
+        Uri.Builder uriBuilder = ENDPOINT.buildUpon().appendQueryParameter("m", method);
+        if (method.equals(SEARCH_METHOD)) {
+            uriBuilder.appendQueryParameter("s", query);
+        }
+        return uriBuilder.build().toString();
+    }
+    /**
+     * 获取图像
+     * @return
+     */
+    public List<GalleryItem> fetchPhotos() {
+        String url = buildUrl(FETCH_METHOD, null);
+        return downloadGalleryItems(url);
+    }
+    /**
+     * 搜索图像
+     * @param query
+     * @return
+     */
+    public List<GalleryItem> searchPhotos(String query) {
+        String url = buildUrl(SEARCH_METHOD, query);
+        return downloadGalleryItems(url);
+    }
+    /**
+     * 返回指定Url（JSON）的图像泛型集合
+     * @param url
+     * @return
+     */
+    private List<GalleryItem> downloadGalleryItems(String url) {
+        List<GalleryItem> items = new ArrayList<>();
+        try {
+            String jsonString = getUrlString(url);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            parseItems(items, jsonBody);
+        } catch (IOException ioe) {
+            Log.e(TAG, "Failed to fetch items", ioe);
+        } catch (JSONException je) {
+            Log.e(TAG, "Failed to parse JSON", je);
+        }
         return items;
     }
     /**
