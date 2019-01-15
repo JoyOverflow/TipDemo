@@ -1,11 +1,28 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme_Old" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+    </style>
+    <style name="MultiGameHelpTitle">
+        <item name="android:textSize">@dimen/multi_help_title_font</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffff99</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:background">@drawable/bg_hint_text_header</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="MultiGameHelpContent">
+        <item name="android:textSize">@dimen/multi_help_content_font</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>
