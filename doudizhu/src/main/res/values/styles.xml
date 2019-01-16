@@ -1,14 +1,11 @@
 <resources>
-    <style name="AppTheme_Old" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-    </style>
-    <style name="AppTheme" parent="AppBaseTheme">
-    </style>
+
     <style name="MultiGameHelpTitle">
         <item name="android:textSize">@dimen/multi_help_title_font</item>
         <item name="android:textStyle">bold</item>
