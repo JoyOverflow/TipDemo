@@ -2,25 +2,28 @@ package pxgd.hyena.com.doudizhu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import pxgd.hyena.com.doudizhu.app.BaseActivity;
 import pxgd.hyena.com.doudizhu.app.MyApplication;
 import pxgd.hyena.com.doudizhu.util.DialogUtil;
 
 /**
  * 游戏起始界面
  */
-public class StartActivity extends AppCompatActivity
+public class StartActivity extends BaseActivity
         implements View.OnClickListener {
 
     private MyApplication app;
-
+    /**
+     * 构造
+     */
     public StartActivity() {
         app= MyApplication.getInstance();
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
