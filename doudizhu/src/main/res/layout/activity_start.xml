@@ -37,32 +37,33 @@
         android:layout_weight="3.0"
         android:orientation="vertical" >
 
+
         <ImageButton
             android:id="@+id/start_screen_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5.0dip"
-            android:layout_marginTop="5.0dip"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/start_screen_blue_btn_selector"
             android:src="@drawable/start_screen_text_start" />
-
         <ImageButton
             android:id="@+id/start_screen_feedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5.0dip"
-            android:layout_marginTop="5.0dip"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/start_screen_green_btn_selector"
             android:src="@drawable/start_screen_text_feedback" />
-
         <ImageButton
             android:id="@+id/start_screen_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5.0dip"
-            android:layout_marginTop="5.0dip"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/start_screen_red_btn_selector"
             android:src="@drawable/start_screen_text_exit" />
+
+
     </LinearLayout>
 
 </LinearLayout>
