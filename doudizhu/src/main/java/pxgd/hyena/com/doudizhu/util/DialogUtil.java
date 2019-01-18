@@ -87,4 +87,7 @@ public class DialogUtil {
             }
         });
     }
+
+    public static void setupDialog(Context context, int i) {
+    }
 }

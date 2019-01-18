@@ -1,15 +1,23 @@
 package pxgd.hyena.com.doudizhu;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.KeyEvent;
 
 import pxgd.hyena.com.doudizhu.app.BaseActivity;
 import pxgd.hyena.com.doudizhu.app.MyApplication;
+import pxgd.hyena.com.doudizhu.app.SingleGameView;
+import pxgd.hyena.com.doudizhu.bean.ScreenType;
 import pxgd.hyena.com.doudizhu.util.DialogUtil;
 
 public class SingleGameActivity extends BaseActivity {
+
+    private ScreenType screenType;
+    private SingleGameView gameview;
+    private Handler handler=new Handler(){};
 
     private MyApplication app;
     /**
@@ -25,7 +33,7 @@ public class SingleGameActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_game);
+        //setContentView(R.layout.activity_single_game);
 
         Display display=getWindowManager().getDefaultDisplay();
         DisplayMetrics metrics=new DisplayMetrics();
@@ -38,8 +46,9 @@ public class SingleGameActivity extends BaseActivity {
             screenType=ScreenType.large;
         }
 
-
-
+        //创建游戏界面视图并加载
+        gameview=new SingleGameView(this,handler,screenType);
+        setContentView(gameview);
 
         app.playbgMusic("normal2.ogg");
     }
