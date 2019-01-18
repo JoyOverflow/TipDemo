@@ -1,4 +1,4 @@
-package pxgd.hyena.com.doudizhu.bean;
+package pxgd.hyena.com.mydemo;
 
 /**
  * low

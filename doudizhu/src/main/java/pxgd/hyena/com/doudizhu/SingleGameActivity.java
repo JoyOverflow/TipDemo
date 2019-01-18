@@ -61,6 +61,15 @@ public class SingleGameActivity extends BaseActivity {
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        /*
+        Log.i(Tag,
+                "KeyEvent.KEYCODE_BACK:"+KeyEvent.KEYCODE_BACK +
+                ",keyCode:"+keyCode+
+                ",event.getKeyCode:"+event.getKeyCode()
+        );
+        */
+
         //判断是否为返回按钮（设备Back键）
         if(KeyEvent.KEYCODE_BACK==keyCode){
             //显示游戏退出对话框
@@ -69,9 +78,6 @@ public class SingleGameActivity extends BaseActivity {
             Log.i(Tag, "onKeyDown!");
         }
         return true;
-
     }
-
-
 
 }

@@ -1,7 +1,6 @@
 package pxgd.hyena.com.doudizhu.bean;
 
-
 public enum GameStep {
-	//��ʼ��,׼��,����,��������������,����
-	init,ready,deal,grab,landlords,over;
+    //初始化,准备,发牌,抢地主，斗地主,结束
+    init,ready,deal,grab,landlords,over;
 }
