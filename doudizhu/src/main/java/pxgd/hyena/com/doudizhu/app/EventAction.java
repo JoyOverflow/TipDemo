@@ -34,7 +34,7 @@ public class EventAction {
         float x=event.getX();
         float y=event.getY();
         if((x>sx)&&(y>sy)&&(x<ex)&&(y<ey)){
-            MyApplication.getInstance().play("SpecOk.ogg");
+            MyApplication.getInstance().play("ok.ogg");
             System.out.println("退出按钮被点击：");
 
             DialogUtil.exitGameDialog(context);
@@ -53,7 +53,7 @@ public class EventAction {
         float x=event.getX();
         float y=event.getY();
         if((x>sx)&&(y>sy)&&(x<ex)&&(y<ey)){
-            MyApplication.getInstance().play("SpecOk.ogg");
+            MyApplication.getInstance().play("ok.ogg");
             System.out.println("设置按钮被点击");
             DialogUtil.setupDialog(context,2);
         }
@@ -73,7 +73,7 @@ public class EventAction {
         float x=event.getX();
         float y=event.getY();
         if((x>sx)&&(y>sy)&&(x<ex)&&(y<ey)){
-            MyApplication.getInstance().play("SpecOk.ogg");
+            MyApplication.getInstance().play("ok.ogg");
             System.out.println("准备按钮被点击 :"+event.getAction());
 
 
@@ -112,7 +112,7 @@ public class EventAction {
                     ()+card.getHeight())){
                 card.setClicked(!card.isClicked());
                 gameView.repaint=true;
-                MyApplication.getInstance().play("SpecSelectCard.ogg");
+                MyApplication.getInstance().play("ex_card.ogg");
             }
             if(card.isClicked()){
                 selectstatus=true;
@@ -203,7 +203,7 @@ public class EventAction {
         float y=event.getY();
         if((x>sx)&&(y>sy)&&(x<ex)&&(y<ey)){
             if((gameView.player2out==false)&&(gameView.pstatus==PlayerStatus.select)){
-                MyApplication.getInstance().play("SpecOk.ogg");
+                MyApplication.getInstance().play("ok.ogg");
                 List<Card> cards=gameView.player2.getCards();
                 gameView.player2.clearOut();
 
@@ -240,7 +240,7 @@ public class EventAction {
         float y=event.getY();
         if((x>sx)&&(y>sy)&&(x<ex)&&(y<ey)){
             if(gameView.player2out==false){
-                MyApplication.getInstance().play("SpecOk.ogg");
+                MyApplication.getInstance().play("ok.ogg");
                 List<Card> cards=gameView.player2.getCards();
                 gameView.player2.clearOut();
 
@@ -272,7 +272,7 @@ public class EventAction {
         float y=event.getY();
         if((x>sx)&&(y>sy)&&(x<ex)&&(y<ey)){
             if((gameView.player2out==false)&&(gameView.pstatus==PlayerStatus.select)){
-                MyApplication.getInstance().play("SpecOk.ogg");
+                MyApplication.getInstance().play("ok.ogg");
                 List<Card> cards=gameView.player2.getCards();
                 for(Card card:cards){
                     card.setClicked(false);
@@ -296,7 +296,7 @@ public class EventAction {
         float y=event.getY();
         if((x>sx)&&(y>sy)&&(x<ex)&&(y<ey)){
             if(gameView.player2out==false){
-                MyApplication.getInstance().play("SpecOk.ogg");
+                MyApplication.getInstance().play("ok.ogg");
                 gameView.pstatus=PlayerStatus.send;
                 gameView.player2out=true;
                 gameView.player2.setPlay(false);

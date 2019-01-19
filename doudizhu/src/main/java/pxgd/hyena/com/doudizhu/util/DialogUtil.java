@@ -35,7 +35,7 @@ public class DialogUtil {
         view.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyApplication.getInstance().play("SpecOk.ogg");
+                MyApplication.getInstance().play("ok.ogg");
                 dialog.dismiss();
                 //退出游戏应用
                 MyApplication.getInstance().exit();

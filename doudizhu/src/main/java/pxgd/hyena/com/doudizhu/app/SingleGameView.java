@@ -1608,20 +1608,20 @@ public class SingleGameView extends SurfaceView implements SurfaceHolder.Callbac
             if(player1.isDizhuflag()){
                 overGamecurrBitmap=overGameBitmaps[2];//农民失败
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Lose.ogg");
+                MyApplication.getInstance().play("ex_lose.ogg");
                 Sleep(1000);
                 overGamecurrBitmap=overGameBitmaps[1];//地主胜利
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Win.ogg");
+                MyApplication.getInstance().play("ex_win.ogg");
 
             }else{
                 overGamecurrBitmap=overGameBitmaps[0];//地主失败
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Lose.ogg");
+                MyApplication.getInstance().play("ex_lose.ogg");
                 Sleep(1000);
                 overGamecurrBitmap=overGameBitmaps[3];//农民胜利
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Win.ogg");
+                MyApplication.getInstance().play("ex_win.ogg");
             }
             Sleep(2000);
             gameStep=GameStep.init;
@@ -1633,20 +1633,20 @@ public class SingleGameView extends SurfaceView implements SurfaceHolder.Callbac
             if(player2.isDizhuflag()){
                 overGamecurrBitmap=overGameBitmaps[2];//农民失败
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Lose.ogg");
+                MyApplication.getInstance().play("ex_lose.ogg");
                 Sleep(1000);
                 overGamecurrBitmap=overGameBitmaps[1];//地主胜利
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Win.ogg");
+                MyApplication.getInstance().play("ex_win.ogg");
 
             }else{
                 overGamecurrBitmap=overGameBitmaps[0];//地主失败
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Lose.ogg");
+                MyApplication.getInstance().play("ex_lose.ogg");
                 Sleep(1000);
                 overGamecurrBitmap=overGameBitmaps[3];//农民胜利
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Win.ogg");
+                MyApplication.getInstance().play("ex_win.ogg");
             }
             Sleep(2000);
             gameStep=GameStep.init;
@@ -1658,20 +1658,20 @@ public class SingleGameView extends SurfaceView implements SurfaceHolder.Callbac
             if(player3.isDizhuflag()){
                 overGamecurrBitmap=overGameBitmaps[2];//农民失败
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Lose.ogg");
+                MyApplication.getInstance().play("ex_lose.ogg");
                 Sleep(1000);
                 overGamecurrBitmap=overGameBitmaps[1];//地主胜利
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Win.ogg");
+                MyApplication.getInstance().play("ex_win.ogg");
 
             }else{
                 overGamecurrBitmap=overGameBitmaps[0];//地主失败
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Lose.ogg");
+                MyApplication.getInstance().play("ex_lose.ogg");
                 Sleep(1000);
                 overGamecurrBitmap=overGameBitmaps[3];//农民胜利
                 repaint=true;
-                MyApplication.getInstance().play("MusicEx_Win.ogg");
+                MyApplication.getInstance().play("ex_win.ogg");
 
             }
             Sleep(2000);
