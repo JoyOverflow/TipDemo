@@ -1,1 +1,1 @@
-include ':doudizhu', ':mydemo'
+include ':doudizhu', ':mydemo', ':gamecard', ':yashily', ':account'
