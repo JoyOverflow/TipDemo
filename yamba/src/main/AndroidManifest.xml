@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="yamba.marakana.com.yamba">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.yamba.SEND_TIMELINE_NOTIFICATIONS"/>
+    <uses-permission android:name="android.yamba.RECEIVE_TIMELINE_NOTIFICATIONS"/>
+
+    <permission
+        android:name="android.yamba.SEND_TIMELINE_NOTIFICATIONS"
+        android:description="@string/send_timeline_notifications_permission_description"
+        android:label="@string/send_timeline_notifications_permission_label"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal"/>
+    <permission
+        android:name="android.yamba.RECEIVE_TIMELINE_NOTIFICATIONS"
+        android:description="@string/receive_timeline_notifications_permission_description"
+        android:label="@string/receive_timeline_notifications_permission_label"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal"/>
+
+    <application
+        android:name=".YambaApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".StatusActivity"/>
+        <activity
+            android:name=".PrefsActivity"
+            android:label="@string/titlePrefs"/>
+
+        <service android:name=".UpdaterService"/>
+
+        <activity android:name=".TimelineActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".BaseActivity"/>
+
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".NetworkReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".YambaWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/yamba_widget_info"/>
+        </receiver>
+
+        <provider
+            android:name=".StatusProvider"
+            android:authorities="com.yamba.statusprovider"
+            android:enabled="true"
+            android:exported="true">
+        </provider>
+    </application>
+
+</manifest>
