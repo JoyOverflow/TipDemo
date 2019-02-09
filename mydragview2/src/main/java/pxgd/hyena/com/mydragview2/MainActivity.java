@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
         int a=Build.VERSION.SDK_INT;
-
+        Build.VERSION_CODES.LOLLIPOP;
 
         initBarColor();
         setTouchListener();
