@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyDemo_2</string>
+    <string name="titlePrefs">Prefs</string>
 </resources>
