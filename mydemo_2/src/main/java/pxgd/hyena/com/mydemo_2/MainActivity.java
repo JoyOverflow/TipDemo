@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MyApplication app=(MyApplication)getApplication();
+        app.twitter();
+
         getWindow().setStatusBarColor(Color.RED);
         getWindow().setNavigationBarColor(Color.YELLOW);
     }
