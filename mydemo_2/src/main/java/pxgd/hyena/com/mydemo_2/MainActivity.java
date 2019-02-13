@@ -1,5 +1,6 @@
 package pxgd.hyena.com.mydemo_2;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setStatusBarColor(Color.RED);
         getWindow().setNavigationBarColor(Color.YELLOW);
+
+        startService(new Intent(this, UpdaterService.class));
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        stopService(new Intent(this, UpdaterService.class));
     }
 
     @Override
