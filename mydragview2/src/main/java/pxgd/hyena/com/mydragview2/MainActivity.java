@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
         int a=Build.VERSION.SDK_INT;
-        Build.VERSION_CODES.LOLLIPOP;
 
         initBarColor();
         setTouchListener();
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initBarColor() {
-        if (Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             View decorView = getWindow().getDecorView();
 
             //SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN和SYSTEM_UI_FLAG_LAYOUT_STABLE（需结合使用，全屏并覆盖状态栏）
