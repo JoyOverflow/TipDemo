@@ -3,14 +3,9 @@ package pxgd.hyena.com.mydragview2;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.OvershootInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -55,12 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setTouchListener() {
-        margin = (int) (10 * getResources().getDisplayMetrics().density + 0.5f);
-        mFloatTouchListener = new FloatTouchListener(this, flParent, flChild, margin);
-        flChild.setOnTouchListener(mFloatTouchListener);
+
         flChild.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            /*
                 Toast.makeText(MainActivity.this, "点击事件", Toast.LENGTH_SHORT).show();
                 TranslateAnimation animation = new TranslateAnimation(30, -30, 0, 0);
                 animation.setInterpolator(new OvershootInterpolator());
@@ -68,8 +62,14 @@ public class MainActivity extends AppCompatActivity {
                 animation.setRepeatCount(3);
                 animation.setRepeatMode(Animation.REVERSE);
                 flChild.startAnimation(animation);
+                       */
             }
+
         });
+
+        margin = (int) (10 * getResources().getDisplayMetrics().density + 0.5f);
+        mFloatTouchListener = new FloatTouchListener(this, flParent, flChild, margin);
+        flChild.setOnTouchListener(mFloatTouchListener);
     }
 
     private void initBarColor() {
@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
             //getWindow().setStatusBarColor(Color.RED);
         }
         //隐藏标题栏
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.hide();
     }
 
 
