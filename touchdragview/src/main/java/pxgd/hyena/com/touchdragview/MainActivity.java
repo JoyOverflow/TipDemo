@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //全屏显示
         initBarColor();
 
         //点击事件监听器
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 animation.setRepeatCount(3);
                 animation.setRepeatMode(Animation.REVERSE);
                 flChild.startAnimation(animation);
+
+
             }
         });
 
