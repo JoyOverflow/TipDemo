@@ -37,6 +37,8 @@ public class TouchHandle implements View.OnTouchListener{
         mFloatViewWindowParam = (FrameLayout.LayoutParams) floatView.getLayoutParams();
         mInterpolator = new DecelerateInterpolator();
 
+
+
         //getScaledTouchSlop是一个距离（手移动距离要大于此值时才开始移动控件）
         ViewConfiguration configuration = ViewConfiguration.get(context);
         mTouchSlop = configuration.getScaledTouchSlop();
