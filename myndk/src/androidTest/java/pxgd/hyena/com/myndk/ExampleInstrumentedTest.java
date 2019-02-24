@@ -1,4 +1,4 @@
-package pxgd.hyena.com.mydemo;
+package pxgd.hyena.com.myndk;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("pxgd.hyena.com.mydemo", appContext.getPackageName());
+        assertEquals("pxgd.hyena.com.myndk", appContext.getPackageName());
     }
 }

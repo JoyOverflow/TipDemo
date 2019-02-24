@@ -1,4 +1,4 @@
-package pxgd.hyena.com.mydemo;
+package pxgd.hyena.com.myndk;
 
 import org.junit.Test;
 
