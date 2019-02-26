@@ -27,15 +27,15 @@ public class StatusActivity extends BaseActivity
         setContentView(R.layout.activity_status);
 
         //获取按钮的引用
-        updateButton = (Button) findViewById(R.id.buttonUpdate);
+        updateButton =findViewById(R.id.buttonUpdate);
         updateButton.setOnClickListener(this);
 
         //文本编辑控件的引用
-        editText = (EditText) findViewById(R.id.editText);
+        editText = findViewById(R.id.editText);
         editText.addTextChangedListener(this);
 
         //文本显示控件的引用
-        textCount = (TextView) findViewById(R.id.textCount);
+        textCount =  findViewById(R.id.textCount);
         textCount.setText(Integer.toString(140));
         textCount.setTextColor(Color.GREEN);
     }
