@@ -66,7 +66,7 @@ public class StatusActivity extends BaseActivity
             textCount.setTextColor(Color.RED);
     }
 
-    //内部类
+    //内部线程类
     class PostToTwitter extends AsyncTask<String, Integer, String>
     {
         @Override
