@@ -16,6 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".AddPlayerActivity">
+        </activity>
+        <activity android:name=".ShowPlayerActivity">
+        </activity>
+
+        <provider
+            android:name=".PlayerDbProvider"
+            android:authorities="ouyj_provider"
+            android:enabled="true"
+            android:exported="false">
+        </provider>
     </application>
 
 </manifest>

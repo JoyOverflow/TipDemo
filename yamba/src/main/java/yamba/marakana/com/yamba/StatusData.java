@@ -53,9 +53,9 @@ public class StatusData {
             db.insertWithOnConflict(TABLE, null, values,
                     SQLiteDatabase.CONFLICT_IGNORE);
         } finally {
-            //保证使用完数据库后对其及时关闭
-            db.close();
-        }
+        //保证使用完数据库后对其及时关闭
+        db.close();
+    }
     }
     /**
      *返回数据库的所有记录
