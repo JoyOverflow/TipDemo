@@ -17,14 +17,14 @@
         android:layout_weight="0"
         android:orientation="horizontal">
         <EditText
-            android:id="@+id/edit_add_player_name"
+            android:id="@+id/edit_add_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="textPersonName"
             android:text="" />
         <Button
-            android:id="@+id/btn_add_player"
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"

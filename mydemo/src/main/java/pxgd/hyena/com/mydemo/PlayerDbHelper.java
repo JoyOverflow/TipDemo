@@ -15,18 +15,24 @@ public class PlayerDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "PlayerDemo.db";
 
-    private static final String TEXT_TYPE = " TEXT";//TODO: test the integer type
+
+    //创建和删除表的SQL语句
+    private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + MyContract.PlayerEntry.TABLE_NAME + " (" +
                     MyContract.PlayerEntry._ID + " INTEGER PRIMARY KEY," +
-                    MyContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME + TEXT_TYPE + COMMA_SEP +
-                    MyContract.PlayerEntry.COLUMN_NAME_SEX + TEXT_TYPE + COMMA_SEP +
-                    MyContract.PlayerEntry.COLUMN_NAME_AGE + TEXT_TYPE +
+                    MyContract.PlayerEntry.COLUMN_PLAYER + TEXT_TYPE + COMMA_SEP +
+                    MyContract.PlayerEntry.COLUMN_SEX + TEXT_TYPE + COMMA_SEP +
+                    MyContract.PlayerEntry.COLUMN_AGE + TEXT_TYPE +
                     " )";
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + MyContract.PlayerEntry.TABLE_NAME;
 
+    /**
+     * 构造
+     * @param context
+     */
     public PlayerDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -50,13 +56,13 @@ public class PlayerDbHelper extends SQLiteOpenHelper {
         //实际要返回的字段列表
         String[] projection = {
                 MyContract.PlayerEntry._ID,
-                MyContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME,
-                MyContract.PlayerEntry.COLUMN_NAME_SEX,
-                MyContract.PlayerEntry.COLUMN_NAME_AGE
+                MyContract.PlayerEntry.COLUMN_PLAYER,
+                MyContract.PlayerEntry.COLUMN_SEX,
+                MyContract.PlayerEntry.COLUMN_AGE
         };
         //排序的字段
         String sortOrder =
-                MyContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME + " DESC";
+                MyContract.PlayerEntry.COLUMN_PLAYER + " DESC";
 
         //查询得到游标
         Cursor c = db.query(
@@ -77,13 +83,18 @@ public class PlayerDbHelper extends SQLiteOpenHelper {
      * @return
      */
     public List<String> getAllPlayerName(SQLiteDatabase db) {
+
+        //获取游标并移动到起始处
         Cursor c = getAllPlayerCursor(db);
         c.moveToFirst();
-        List<String> list = new ArrayList<String>();
+
+        //创建泛型集合
+        List<String> list = new ArrayList<>();
+        //遍历游标将字段值加入到集合中
         while (c.isAfterLast() == false) {
             String name = c.getString(
                     c.getColumnIndexOrThrow(
-                            MyContract.PlayerEntry.COLUMN_NAME_PLAYER_NAME
+                            MyContract.PlayerEntry.COLUMN_PLAYER
                     )
             );
             list.add(name);
