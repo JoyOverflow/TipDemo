@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">MyDemo</string>
-
     <string name="add_player">增加指定玩家</string>
     <string name="show_player_list">显示玩家列表</string>
+    <string name="show_photos">获取所有图片</string>
+    <string name="show_contacts">获取本机联系人</string>
+    <string name="show_operation">获取本机联系人2</string>
+
+    <string name="btn_ok">确定</string>
+    <string name="btn_close">关闭</string>
+    <string name="btn_data">加载数据</string>
+
+
+
 </resources>

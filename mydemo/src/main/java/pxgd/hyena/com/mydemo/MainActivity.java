@@ -33,6 +33,37 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.btnShowPhotos).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        PhotoActivity.class
+                );
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btnShowContacts).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        ContactActivity.class
+                );
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btnOperation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        OperationActivity.class
+                );
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
