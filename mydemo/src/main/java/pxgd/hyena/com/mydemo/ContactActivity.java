@@ -29,8 +29,8 @@ public class ContactActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
+        //查找视图引用
         textResult = findViewById(R.id.txtResult);
-
         btnLoadData = findViewById(R.id.btnData);
         btnLoadData.setOnClickListener(this);
     }
@@ -50,6 +50,8 @@ public class ContactActivity extends AppCompatActivity
     }
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+        //用游标内的新数据赋值视图控件值
         if (data != null && data.getCount() > 0) {
             StringBuilder sb = new StringBuilder(128);
             //cursor.moveToFirst();
@@ -65,11 +67,11 @@ public class ContactActivity extends AppCompatActivity
         else
             textResult.setText("No Contacts in device");
 
+        //关闭游标
         data.close();
     }
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
     }
 
 

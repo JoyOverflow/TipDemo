@@ -24,11 +24,14 @@ import java.io.InputStream;
 
 /**
  * 使用v4版本的LoaderManager,SimpleCursorAdapter,CursorLoader
+ * 列表视的项点击事件处理
+ * Manifest清单文件内的权限声明
  */
 public class PhotoActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private Bitmap bitmap = null;
     private byte[] mContent = null;
+    public static final String TAG = "PhotoActivity";
 
     //图片的描述
     private static final String[] STORE_IMAGES = {
@@ -41,7 +44,7 @@ public class PhotoActivity extends AppCompatActivity implements LoaderManager.Lo
 
 
     private ListView listView = null;
-    private SimpleCursorAdapter simpleCursorAdapter = null;
+    private SimpleCursorAdapter adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +52,8 @@ public class PhotoActivity extends AppCompatActivity implements LoaderManager.Lo
         setContentView(R.layout.activity_photo);
 
 
-        //查找到列表视
-        listView = findViewById(R.id.photo_list_view);
-        //创建游标适配器（使用自定义项布局视图）
-        simpleCursorAdapter = new SimpleCursorAdapter(
+        //创建简单游标适配器（使用自定义项布局视图）
+        adapter = new SimpleCursorAdapter(
                 this,
                 R.layout.photo_list_item,
                 null,
@@ -60,14 +61,17 @@ public class PhotoActivity extends AppCompatActivity implements LoaderManager.Lo
                 new int[] { R.id.item_title, R.id.item_value},
                 0
         );
-        //为列表视设置适配器
-        simpleCursorAdapter.setViewBinder(new PhotoLocationBinder());
-        listView.setAdapter(simpleCursorAdapter);
+        //设置项视图的绑定
+        adapter.setViewBinder(new PhotoLocationBinder());
+
+        //查找到列表视（为列表视设置适配器）
+        listView = findViewById(R.id.photo_list_view);
+        listView.setAdapter(adapter);
+        //项点击事件处理
+        listView.setOnItemClickListener(new PhotoOnClickListener());
 
         //加载数据，此处是getSupportLoaderManager（因它来自v4版本）
         getSupportLoaderManager().initLoader(0, null, this);
-        //项点击事件处理
-        listView.setOnItemClickListener(new PhotoOnClickListener());
     }
     @Override
     protected void onDestroy() {
@@ -77,7 +81,6 @@ public class PhotoActivity extends AppCompatActivity implements LoaderManager.Lo
             bitmap.recycle();
         }
     }
-
 
 
 
@@ -94,31 +97,33 @@ public class PhotoActivity extends AppCompatActivity implements LoaderManager.Lo
     }
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        simpleCursorAdapter.swapCursor(data);
+        adapter.swapCursor(data);
     }
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        simpleCursorAdapter.swapCursor(null);
+        adapter.swapCursor(null);
     }
+
+
 
 
     private class PhotoOnClickListener implements android.widget.AdapterView.OnItemClickListener {
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long pid) {
 
             //创建对话框（使用布局文件）
             final Dialog dialog = new Dialog(PhotoActivity.this);
             dialog.setContentView(R.layout.photo_show);
             dialog.setTitle("显示图片");
 
-            //查找按钮引用并设置事件（关闭对话框）
+            //查找对话框内的按钮引用并设置事件（关闭对话框）
             Button btnClose =dialog.findViewById(R.id.btnClose);
             btnClose.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
+                    //关闭对话框
                     dialog.dismiss();
-
                     //释放图片资源
                     if(bitmap != null){
                         bitmap.recycle();
@@ -126,12 +131,13 @@ public class PhotoActivity extends AppCompatActivity implements LoaderManager.Lo
                 }
             });
 
+            ContentResolver resolver = getContentResolver();
 
+            //通过参数得到pid
             Uri uri = MediaStore.Images.Media.
-                    EXTERNAL_CONTENT_URI.buildUpon().appendPath(Long.toString(id)).build();
+                    EXTERNAL_CONTENT_URI.buildUpon().appendPath(Long.toString(pid)).build();
 
             //从Uri中读取图片
-            ContentResolver resolver = getContentResolver();
             ImageView ivImageShow = dialog.findViewById(R.id.ivImageShow);
             try {
                 mContent = readInputStream(resolver.openInputStream(Uri.parse(uri.toString())));

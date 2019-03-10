@@ -33,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.btnFlavor).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        FlavorActivity.class
+                );
+                startActivity(intent);
+            }
+        });
         findViewById(R.id.btnShowPhotos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

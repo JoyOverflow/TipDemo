@@ -4,8 +4,6 @@
 
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
-
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
@@ -33,14 +31,15 @@
         <activity android:name=".OperationActivity">
         </activity>
 
-
-
         <provider
             android:name=".PlayerDbProvider"
             android:authorities="ouyj_provider"
             android:enabled="true"
             android:exported="false">
         </provider>
+
+        <activity android:name=".FlavorActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -19,15 +19,13 @@ public class ShowPlayerActivity extends AppCompatActivity
     private static final String TAG = "ShowPlayerActivity";
 
     //数据库对象
-    PlayerDbHelper mDbHelper;
+    PlayerDbHelper helper;
     SQLiteDatabase db;
-
-    ListView lv;
 
     //游标适配器对象
     SimpleCursorAdapter mAdapter;
 
-    //要访问的字段
+    //要读取的字段
     String[] projection = {
             MyContract.PlayerEntry._ID,
             MyContract.PlayerEntry.COLUMN_PLAYER,
@@ -38,14 +36,17 @@ public class ShowPlayerActivity extends AppCompatActivity
     String sortOrder =
             MyContract.PlayerEntry._ID /*+ " DESC"*/;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_player);
+        Log.d(TAG, "onCreate!");
 
-        //读取数据库
-        mDbHelper = new PlayerDbHelper(this);
-        db = mDbHelper.getReadableDatabase();
+        //打开读取数据库
+        helper = new PlayerDbHelper(this);
+        db = helper.getReadableDatabase();
 
         //创建游标适配器对象
         mAdapter = new SimpleCursorAdapter(
@@ -57,13 +58,52 @@ public class ShowPlayerActivity extends AppCompatActivity
                 0
         );
 
-        //绑定适配器
-        lv =findViewById(R.id.lv_show_players);
+        //列表视设置（绑定）适配器
+        ListView lv =findViewById(R.id.lst_players);
         lv.setAdapter(mAdapter);
 
         //加载器执行
         getLoaderManager().initLoader(PLAYER_LOADER, null, this);
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart!");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume!");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop!");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy!");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause!");
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart!");
+    }
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        Log.d(TAG, "onWindowFocusChanged!");
+    }
+
+
+
+
 
 
     /**

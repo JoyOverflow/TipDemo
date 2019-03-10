@@ -70,7 +70,8 @@ public class OperationActivity extends AppCompatActivity
         listView = findViewById(R.id.listViewMain);
         editText = findViewById(R.id.editText);
 
-        ((Button) findViewById(R.id.buttonAdd)).setOnLongClickListener(new View.OnLongClickListener() {
+        //按钮长按时出现动画
+        (findViewById(R.id.buttonAdd)).setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 //Button tag will always be either "byBatch" or "byIntent"
@@ -170,7 +171,7 @@ public class OperationActivity extends AppCompatActivity
     public void buttonRemoveCL(View view) {
         String where = ContactsContract.RawContacts._ID + " = " + "'" + editText.getText().toString()+ "'";
         int rowsDelete = getContentResolver().delete(ContactsContract.RawContacts.CONTENT_URI, where, null);
-        Toast.makeText(this, rowsDelete + " contacts deleted successfully...", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, rowsDelete + " contactList deleted successfully...", Toast.LENGTH_LONG).show();
     }
 
 
@@ -185,7 +186,7 @@ public class OperationActivity extends AppCompatActivity
                     || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CONTACTS)) {
 
                 //增加依赖"com.android.support:design"
-                Snackbar.make(listView, "Please provide permissions to access contacts...", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(listView, "Please provide permissions to access contactList...", Snackbar.LENGTH_INDEFINITE)
                         .setAction("Provide permissions", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -265,22 +266,31 @@ public class OperationActivity extends AppCompatActivity
     }
     @Override
     public void onLoadFinished(Loader loader, Object data) {
-        ArrayList<String> contacts = new ArrayList<>();
-        ArrayAdapter<String> contactsAdapter;
+
+        //游标数据转换为泛型
+        ArrayList<String> contactList = new ArrayList<>();
         Cursor cursor = (Cursor) data;
         if(cursor != null && cursor.getCount() > 0) {
             while(cursor.moveToNext()) {
-                contacts.add(cursor.getString(0) + ", " + cursor.getString(1) + ", status:" + cursor.getString(1) + ", hasPhone:"  + cursor.getString(2));
+                contactList.add(
+                        cursor.getString(0) + ", " +
+                                cursor.getString(1) + ", status:" +
+                                cursor.getString(1) + ", hasPhone:"  +
+                                cursor.getString(2)
+                );
             }
-        } else
-            contacts.add("No contacts in device");
+        }
+        else
+            contactList.add("No contactList in device");
 
-        contactsAdapter = new ArrayAdapter<>(
+
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<>(
                 this,
                 R.layout.operation_adapter,
-                contacts
+                contactList
         );
-        listView.setAdapter(contactsAdapter);
+        listView.setAdapter(adapter);
     }
     @Override
     public void onLoaderReset(Loader loader) {

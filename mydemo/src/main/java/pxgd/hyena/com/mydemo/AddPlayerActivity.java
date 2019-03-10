@@ -13,26 +13,15 @@ import java.util.List;
 
 public class AddPlayerActivity extends AppCompatActivity {
 
-    List<String> players;
-
-    //数据库对象
-    PlayerDbHelper mDbHelper;
-    SQLiteDatabase db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_player);
 
-        //创建数据库对象
-        mDbHelper = new PlayerDbHelper(AddPlayerActivity.this);
-        db = mDbHelper.getWritableDatabase();
-
-        //从数据库获取数据集
-        players = mDbHelper.getAllPlayerName(db);
-
-        //绑定列表视
-        ListView lv = findViewById(R.id.add_player_list_view);
+        //创建数据库对象并从数据库获取泛型数据集
+        PlayerDbHelper helper = new PlayerDbHelper(AddPlayerActivity.this);
+        final SQLiteDatabase db = helper.getWritableDatabase();
+        final List<String> players = helper.getAllPlayerName(db);
 
         //创建数组适配器对象（用数据库读取的泛型集合绑定它）
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -40,7 +29,10 @@ public class AddPlayerActivity extends AppCompatActivity {
                 android.R.layout.simple_expandable_list_item_1,
                 players
         );
+        //查找列表视（为列表视设置数组适配器）
+        ListView lv = findViewById(R.id.lst_player_view);
         lv.setAdapter(adapter);
+
 
         //为按钮添加事件
         findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
@@ -48,7 +40,7 @@ public class AddPlayerActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //得到编辑框的值
-                TextView nameTV = findViewById(R.id.edit_add_name);
+                TextView nameTV = findViewById(R.id.edit_name);
                 String playerName = nameTV.getText().toString();
 
                 //构建键值对
@@ -58,21 +50,16 @@ public class AddPlayerActivity extends AppCompatActivity {
                 values.put(MyContract.PlayerEntry.COLUMN_AGE, "42");
 
                 //插入新行（返回新行的自增字段值）
-                long newRowId= db.insert(
+                long newId= db.insert(
                         MyContract.PlayerEntry.TABLE_NAME,
                         null,
                         values
                 );
                 //新值添加到集合中
                 players.add(0, playerName);
-                //适配器调用此方法表示数据已改变（通过getView来刷新每Item的内容）
+                //调用适配器方法表示数据已改变（通过getView来刷新每Item的内容）
                 adapter.notifyDataSetChanged();
             }
         });
-
-
-
-
-
     }
 }

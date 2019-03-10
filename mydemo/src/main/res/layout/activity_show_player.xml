@@ -10,7 +10,7 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context=".ShowPlayerActivity">
     <ListView
-        android:id="@+id/lv_show_players"
+        android:id="@+id/lst_players"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
