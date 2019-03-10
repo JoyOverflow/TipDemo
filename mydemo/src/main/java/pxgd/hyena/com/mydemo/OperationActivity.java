@@ -174,8 +174,9 @@ public class OperationActivity extends AppCompatActivity
         Toast.makeText(this, rowsDelete + " contactList deleted successfully...", Toast.LENGTH_LONG).show();
     }
 
-
-
+    /**
+     * 判断是否有相应的权限
+     */
     private void checkPermissionReadContacts() {
         permissionReadContacts = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
         permissionWriteContacts = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS);
@@ -213,6 +214,7 @@ public class OperationActivity extends AppCompatActivity
             }
         }
         else {
+            //如果有权限则启动异步加载器
             if(getSupportLoaderManager().getLoader(LOADER_CALLBACK_ID) == null)
                 getSupportLoaderManager().initLoader(LOADER_CALLBACK_ID, null, this);
             else
@@ -284,20 +286,18 @@ public class OperationActivity extends AppCompatActivity
             contactList.add("No contactList in device");
 
 
+        //创建适配器
         ArrayAdapter<String> adapter;
         adapter = new ArrayAdapter<>(
                 this,
                 R.layout.operation_adapter,
                 contactList
         );
+        //列表视绑定适配器
         listView.setAdapter(adapter);
     }
     @Override
     public void onLoaderReset(Loader loader) {
 
     }
-
-
-
-
 }
