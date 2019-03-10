@@ -1,1 +1,1 @@
-include ':doudizhu', ':gamecard', ':mydemo_2',':yamba',':imageview', ':yashily', ':mydragview', ':dragdrop', ':mydragview2', ':touchdragview', ':mydemo'
+include ':doudizhu',  ':mydemo_2',':yamba',':imageview', ':yashily', ':mydragview', ':dragdrop', ':mydragview2', ':touchdragview', ':mydemo'
