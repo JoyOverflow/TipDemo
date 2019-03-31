@@ -20,10 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         receiver = new TimeReceiver();
         filter = new IntentFilter( NEW_STATUS_INTENT );
-
 
         //设置按钮事件处理
         findViewById(R.id.btnAddPlayer).setOnClickListener(new View.OnClickListener() {
