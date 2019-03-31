@@ -94,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 //发送自定义广播
                 Intent  i = new Intent(NEW_STATUS_INTENT);
                 i.putExtra("com.yamba.id", 104259);
-                sendBroadcast(i);
+                //sendBroadcast(i);
+                sendBroadcast(i, "receive_permission");
             }
         });
     }
@@ -106,7 +107,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(receiver, filter);
+        //registerReceiver(receiver, filter);
+        registerReceiver(
+                receiver,
+                filter,
+                "send_permission",
+                null
+        );
     }
     class TimeReceiver extends BroadcastReceiver {
         @Override

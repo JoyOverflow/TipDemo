@@ -10,4 +10,7 @@
     <string name="btn_ok">确定</string>
     <string name="btn_close">关闭</string>
     <string name="btn_data">加载数据</string>
+
+    <string name="send_permission">Sends Notifications</string>
+    <string name="receive_permission">Receive Notifications</string>
 </resources>
